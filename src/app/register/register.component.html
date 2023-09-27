@@ -1,0 +1,42 @@
+<nav class="navbar bg-dark navbar-dark">
+    <div class="container-fluid">
+        <span class="navbar-brand">
+            <i class="bi bi-chat-dots-fill"></i>
+            &nbsp;Foro Dudas ITSCH
+        </span>
+    </div>
+</nav>
+<div class="container">
+    <div class="row">
+        <div class="col"></div>
+        <div class="col">
+            <div class="card mt-3">
+                <div class="card-header">Registro de usuario</div>
+                <div class="card-body">
+                    <div class="input-group">
+                        <span class="input-group-text">
+                            <i class="bi bi-envelope-at"></i>
+                        </span>
+                        <input type="email" class="form-control" placeholder="Correo" [(ngModel)]="email">
+                    </div>
+                    <div class="input-group mt-3">
+                        <span class="input-group-text">
+                            <i class="bi bi-key-fill"></i>
+                        </span>
+                        <input type="password" class="form-control" placeholder="Contraseña" [(ngModel)]="pass">
+                    </div>
+                    <div class="alert alert-danger" role="alert" *ngIf="showError">
+                       Ups! no eres fan de Batman (algo salio mal vuelve a intentar)
+                    </div>
+                </div>
+                <div class="card-footer text-end">
+                    <button class="btn btn-primary" (click)="registro()" [disabled]="showSpinner">
+                        <div class="spinner-border spinner-border-sm" *ngIf="showSpinner"> </div>
+                        Registro
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="col"></div>
+    </div>
+</div>

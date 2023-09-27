@@ -1,0 +1,69 @@
+<div class="container">
+    <div class="row">
+        <div class="col"></div>
+        <div class="col">
+            <div class="card mt-3 mb-3">
+                <div class="card-header">Agregar pregunta</div>
+                <div class="card-body">
+                    <select name="" id="" class="form-select" [(ngModel)]="newP.categoria">
+                        <option value="General">General</option>
+                        <option value="Programacion">Programacion</option>x
+                        <option value="Redes">Redes</option>
+                    </select>
+                    <input type="text" class="form-control mt-1" [(ngModel)]="newP.pregunta">
+                    <button class="btn btn-outline-primary" (click)="crearPregunta()">
+                        <i class="bi bi-cloud-upload-fill"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="col"></div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <table class="table table-hover table-secondary">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Pregunta</th>
+                        <th>Usuario</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let p of preguntas">
+                        <td>{{p.no}}</td>
+                        <td>{{p.pregunta + "(" + p.fecha + ")"}}</td>
+                        <td>{{p.correo}}</td>
+                        <td class="text-end">
+                            <button class="btn btn-outline-secondary"><i class="bi bi-arrow-right"></i></button>
+                            &nbsp;
+                            <button class="btn btn-outline-success" (click)="editarPregunta(p)"><i class="bi bi-pencil-square" data-bs-toggle="modal" data-bs-target="#exampleModal"></i></button>
+                            &nbsp;
+                            <button class="btn btn-outline-danger" (click)="eliminarPregunta(p.id)"><i class="bi bi-trash3-fill"></i></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modificar Pregunta</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <input type="text" class="form-control mt-1" [(ngModel)]="mod.pregunta">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="modificarPregunta()">Guardar cambios</button>
+        </div>
+      </div>
+    </div>
+  </div>
